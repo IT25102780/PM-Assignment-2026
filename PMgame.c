@@ -10,6 +10,21 @@
 char map[ROWS][COLS];
 int hiddenTrap[ROWS][COLS];
 
+typedef struct
+{
+    char name[30];
+    int row;
+    int col;
+    int score;
+    int health;
+    int keys;
+    char symbol;
+
+} Player;
+
+Player players[MAX_PLAYERS];
+int playerCount;
+
 int main()
 {
     srand(time(NULL));
