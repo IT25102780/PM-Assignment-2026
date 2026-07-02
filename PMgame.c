@@ -25,6 +25,11 @@ typedef struct
 Player players[MAX_PLAYERS];
 int playerCount;
 
+void initializeMap();
+void printMap();
+void placePlayers();
+void gameMenu();
+
 int main()
 {
     srand(time(NULL));
