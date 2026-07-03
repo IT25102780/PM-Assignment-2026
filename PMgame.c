@@ -119,3 +119,24 @@ void initializeMap()
     }
 }
 
+void placePlayers()
+{
+    players[0].row = 1;
+    players[0].col = 1;
+    map[1][1] = players[0].symbol;
+
+    if(playerCount >= 2)
+    {
+        players[1].row = 13;
+        players[1].col = 13;
+        map[13][13] = players[1].symbol;
+    }
+
+    if(playerCount == 3)
+    {
+        players[2].row = 1;
+        players[2].col = 13;
+        map[1][13] = players[2].symbol;
+    }
+}
+
