@@ -140,3 +140,28 @@ void placePlayers()
     }
 }
 
+void printMap()
+{
+    printf("\n");
+
+    for(int i = 0; i < ROWS; i++)
+    {
+        for(int j = 0; j < COLS; j++)
+        {
+            printf("%c ", map[i][j]);
+        }
+
+        printf("\n");
+    }
+
+    printf("\n");
+
+    for(int i = 0; i < playerCount; i++)
+    {
+        printf("Player %d (%s)\n", i + 1, players[i].name);
+        printf("Health : %d\n", players[i].health);
+        printf("Score  : %d\n", players[i].score);
+        printf("Keys   : %d\n\n", players[i].keys);
+    }
+}
+
