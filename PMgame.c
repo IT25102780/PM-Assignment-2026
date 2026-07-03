@@ -99,4 +99,23 @@ void gameMenu()
         players[i].symbol = '1' + i;
     }
 }
+void initializeMap()
+{
+    for(int i = 0; i < ROWS; i++)
+    {
+        for(int j = 0; j < COLS; j++)
+        {
+            if(i == 0 || i == ROWS - 1 || j == 0 || j == COLS - 1)
+            {
+                map[i][j] = '#';
+            }
+            else
+            {
+                map[i][j] = ' ';
+            }
+
+            hiddenTrap[i][j] = 0;
+        }
+    }
+}
 
