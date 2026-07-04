@@ -129,6 +129,42 @@ void placeKeys()
     }
 }
 
+//Place Doors
+void placeDoors()
+{
+    int count = 0;
+    int r, c;
+
+    while(count < DOORS)
+    {
+        getRandomEmptyCell(&r, &c);
+
+        map[r][c] = 'D';
+        count++;
+    }
+}
+
+//Place Hidden Traps
+void placeTraps()
+{
+    int count = 0;
+    int r, c;
+
+    while(count < TRAPS)
+    {
+        do
+        {
+            r = rand() % SIZE;
+            c = rand() % SIZE;
+
+        } while(map[r][c] != ' ' ||
+                hiddenTrap[r][c] == 1);
+
+        hiddenTrap[r][c] = 1;
+        count++;
+    }
+}
+
 
 
 
