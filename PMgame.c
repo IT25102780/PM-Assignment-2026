@@ -299,6 +299,26 @@ void printMap()
     printPlayerInfo();
 }
 
+//Update Main Function
+int main()
+{
+    srand(time(NULL));
+
+    initializeMap();
+
+    initializePlayers();
+
+    placePlayers();
+
+    printMap();
+
+    return 0;
+}
+
+
+
+
+
 
 
 
