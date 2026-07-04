@@ -180,6 +180,18 @@ void initializeMap()
     placeTraps();
 }
 
+//Main Function Test(complete map initialization section of part A)
+int main()
+{
+    srand(time(NULL));
+
+    initializeMap();
+
+    printf("Map Initialized Successfully!\n");
+
+    return 0;
+}
+
 
 
 
