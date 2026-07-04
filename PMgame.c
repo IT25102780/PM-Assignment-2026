@@ -58,6 +58,17 @@ void createBorderWalls()
     }
 }
 
+//Random Empty Cell Generator
+void getRandomEmptyCell(int *r, int *c)
+{
+    do
+    {
+        *r = rand() % SIZE;
+        *c = rand() % SIZE;
+
+    } while(map[*r][*c] != ' ');
+}
+
 
 
 
