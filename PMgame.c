@@ -165,13 +165,27 @@ void placeTraps()
     }
 }
 
+//Create Complete Map
+void initializeMap()
+{
+    initializeEmptyMap();
+
+    createBorderWalls();
+
+    placeWalls();
+    placeTreasures();
+    placeHealthPacks();
+    placeKeys();
+    placeDoors();
+    placeTraps();
+}
 
 
 
 
-void printMap();
-void placePlayers();
-void gameMenu();
+
+
+
 
 int main()
 {
