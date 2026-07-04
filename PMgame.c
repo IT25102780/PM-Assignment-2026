@@ -28,10 +28,25 @@ int hiddenTrap[SIZE][SIZE];
 
 Player players[2];
 
+//Empty Map Initialization
+void initializeEmptyMap()
+{
+    int i, j;
+
+    for(i = 0; i < SIZE; i++)
+    {
+        for(j = 0; j < SIZE; j++)
+        {
+            map[i][j] = ' ';
+            hiddenTrap[i][j] = 0;
+        }
+    }
+}
 
 
 
-void initializeMap();
+
+
 void printMap();
 void placePlayers();
 void gameMenu();
