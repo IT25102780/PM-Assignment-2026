@@ -69,6 +69,21 @@ void getRandomEmptyCell(int *r, int *c)
     } while(map[*r][*c] != ' ');
 }
 
+//Place Interior Walls
+void placeWalls()
+{
+    int count = 0;
+    int r, c;
+
+    while(count < WALLS)
+    {
+        getRandomEmptyCell(&r, &c);
+
+        map[r][c] = '#';
+        count++;
+    }
+}
+
 
 
 
