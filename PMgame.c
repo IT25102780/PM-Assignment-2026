@@ -3,27 +3,33 @@
 #include <string.h>
 #include <time.h>
 
-#define ROWS 15
-#define COLS 15
-#define MAX_PLAYERS 3
+#define SIZE 15
 
-char map[ROWS][COLS];
-int hiddenTrap[ROWS][COLS];
+#define WALLS 30
+#define TREASURES 12
+#define HEALTHPACKS 5
+#define KEYS 3
+#define DOORS 3
+#define TRAPS 10
 
 typedef struct
 {
-    char name[30];
+    char name[50];
     int row;
     int col;
     int score;
     int health;
     int keys;
     char symbol;
-
 } Player;
 
-Player players[MAX_PLAYERS];
-int playerCount;
+char map[SIZE][SIZE];
+int hiddenTrap[SIZE][SIZE];
+
+Player players[2];
+
+
+
 
 void initializeMap();
 void printMap();
