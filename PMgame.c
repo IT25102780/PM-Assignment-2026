@@ -195,6 +195,27 @@ int main()
 
 
 
+//Player Struct Initialization
+void initializePlayers()
+{
+    printf("Enter Player 1 Name: ");
+    scanf("%s", players[0].name);
+
+    printf("Enter Player 2 Name: ");
+    scanf("%s", players[1].name);
+
+    players[0].health = 100;
+    players[0].score = 0;
+    players[0].keys = 0;
+    players[0].symbol = '1';
+
+    players[1].health = 100;
+    players[1].score = 0;
+    players[1].keys = 0;
+    players[1].symbol = '2';
+}
+
+
 
 
 
