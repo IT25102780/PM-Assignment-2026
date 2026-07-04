@@ -235,6 +235,27 @@ void placePlayers()
     }
 }
 
+//Print Player Information
+void printPlayerInfo()
+{
+    int i;
+
+    printf("\n=====================================\n");
+
+    for(i = 0; i < 2; i++)
+    {
+        printf("Player %c (%s)\n",
+               players[i].symbol,
+               players[i].name);
+
+        printf("HP: %d  Score: %d  Keys: %d\n",
+               players[i].health,
+               players[i].score,
+               players[i].keys);
+
+        printf("-------------------------------------\n");
+    }
+}
 
 
 
