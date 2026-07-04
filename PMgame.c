@@ -257,6 +257,49 @@ void printPlayerInfo()
     }
 }
 
+//Print Map
+void printMap()
+{
+    int i, j;
+    int playerFound;
+
+    printf("\n");
+
+    for(i = 0; i < SIZE; i++)
+    {
+        for(j = 0; j < SIZE; j++)
+        {
+            playerFound = 0;
+
+            if(players[0].health > 0 &&
+               players[0].row == i &&
+               players[0].col == j)
+            {
+                printf("%c ", players[0].symbol);
+                playerFound = 1;
+            }
+
+            else if(players[1].health > 0 &&
+                    players[1].row == i &&
+                    players[1].col == j)
+            {
+                printf("%c ", players[1].symbol);
+                playerFound = 1;
+            }
+
+            if(!playerFound)
+            {
+                printf("%c ", map[i][j]);
+            }
+        }
+
+        printf("\n");
+    }
+
+    printPlayerInfo();
+}
+
+
 
 
 
