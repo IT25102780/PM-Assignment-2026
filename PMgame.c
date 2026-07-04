@@ -43,6 +43,21 @@ void initializeEmptyMap()
     }
 }
 
+//Boder Walls
+void createBorderWalls()
+{
+    int i;
+
+    for(i = 0; i < SIZE; i++)
+    {
+        map[0][i] = '#';
+        map[SIZE - 1][i] = '#';
+
+        map[i][0] = '#';
+        map[i][SIZE - 1] = '#';
+    }
+}
+
 
 
 
