@@ -215,6 +215,27 @@ void initializePlayers()
     players[1].symbol = '2';
 }
 
+//Random Player Placement
+void placePlayers()
+{
+    int r, c;
+    int i;
+
+    for(i = 0; i < 2; i++)
+    {
+        do
+        {
+            r = rand() % SIZE;
+            c = rand() % SIZE;
+
+        } while(map[r][c] != ' ');
+
+        players[i].row = r;
+        players[i].col = c;
+    }
+}
+
+
 
 
 
