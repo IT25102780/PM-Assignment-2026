@@ -84,6 +84,51 @@ void placeWalls()
     }
 }
 
+//Place Treasures
+void placeTreasures()
+{
+    int count = 0;
+    int r, c;
+
+    while(count < TREASURES)
+    {
+        getRandomEmptyCell(&r, &c);
+
+        map[r][c] = 'T';
+        count++;
+    }
+}
+
+//Place Health Packs
+void placeHealthPacks()
+{
+    int count = 0;
+    int r, c;
+
+    while(count < HEALTHPACKS)
+    {
+        getRandomEmptyCell(&r, &c);
+
+        map[r][c] = 'H';
+        count++;
+    }
+}
+
+//Place Keys
+void placeKeys()
+{
+    int count = 0;
+    int r, c;
+
+    while(count < KEYS)
+    {
+        getRandomEmptyCell(&r, &c);
+
+        map[r][c] = 'K';
+        count++;
+    }
+}
+
 
 
 
