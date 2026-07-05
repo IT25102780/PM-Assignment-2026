@@ -203,21 +203,34 @@ void initializeMap()
 //Player Struct Initialization
 void initializePlayers()
 {
-    printf("Enter Player 1 Name: ");
-    scanf("%s", players[0].name);
+    int i;
 
-    printf("Enter Player 2 Name: ");
-    scanf("%s", players[1].name);
+    do
+    {
+        printf("Enter Number of Players (1-3): ");
+        scanf("%d",&playerCount);
 
-    players[0].health = 100;
-    players[0].score = 0;
-    players[0].keys = 0;
-    players[0].symbol = '1';
+    }while(playerCount<1 || playerCount>3);
 
-    players[1].health = 100;
-    players[1].score = 0;
-    players[1].keys = 0;
-    players[1].symbol = '2';
+    for(i=0;i<playerCount;i++)
+    {
+        printf("Enter Player %d Name: ",i+1);
+        scanf("%s",players[i].name);
+
+        players[i].health=100;
+        players[i].score=0;
+        players[i].keys=0;
+
+        players[i].symbol='1'+i;
+
+        players[i].movesMade=0;
+        players[i].treasuresFound=0;
+        players[i].trapsTriggered=0;
+        players[i].damageTaken=0;
+        players[i].healthPacksUsed=0;
+        players[i].keysCollected=0;
+        players[i].doorsUnlocked=0;
+    }
 }
 
 //Random Player Placement
