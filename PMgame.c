@@ -632,3 +632,17 @@ void showScores()
     }
 }
 
+//Save Prompt
+void askSave()
+{
+    char choice;
+
+    printf("\nSave Game? (Y/N): ");
+    scanf(" %c", &choice);
+
+    if(choice == 'Y' || choice == 'y')
+    {
+        saveGame();
+    }
+}
+
