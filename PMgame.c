@@ -400,6 +400,55 @@ void processTile(int playerIndex)
     }
 }
 
+//Single Step Movement 
+void performMove(int playerIndex, char move)
+{
+    int newRow = players[playerIndex].row;
+    int newCol = players[playerIndex].col;
+
+    switch(move)
+    {
+        case 'W':
+        case 'w':
+            newRow--;
+            break;
+
+        case 'S':
+        case 's':
+            newRow++;
+            break;
+
+        case 'A':
+        case 'a':
+            newCol--;
+            break;
+
+        case 'D':
+        case 'd':
+            newCol++;
+            break;
+
+        default:
+            printf("Invalid move character skipped!\n");
+            return;
+    }
+
+    if(!isValidMove(newRow, newCol))
+    {
+        printf("Move blocked!\n");
+        return;
+    }
+
+    if(!handleDoor(playerIndex, newRow, newCol))
+    {
+        return;
+    }
+
+    players[playerIndex].row = newRow;
+    players[playerIndex].col = newCol;
+
+    processTile(playerIndex);
+}
 
 
 
