@@ -241,6 +241,24 @@ void initializePlayers()
     }
 }
 
+//Helper Function for placePlayer() overlap
+int isPlayerAtPosition(int row, int col)
+{
+    int i;
+
+    for(i = 0; i < playerCount; i++)
+    {
+        if(players[i].row == row &&
+           players[i].col == col)
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+
 //Random Player Placement
 void placePlayers()
 {
@@ -254,10 +272,12 @@ void placePlayers()
             r = rand() % SIZE;
             c = rand() % SIZE;
 
-        } while(map[r][c] != ' ');
+        }
+       	while(map[r][c] != ' ' ||
+			isPlayerAtPosition(r, c));
 
         players[i].row = r;
-        players[i].col = c;
+	players[i].col = c;
     }
 }
 
@@ -531,7 +551,7 @@ void movePlayer(int playerIndex)
            players[playerIndex].name);
 
     printf("Enter up to 4 moves (WASD): ");
-    scanf("%s", moves);
+    scanf("%49s", moves);
 
     len = strlen(moves);
 
@@ -633,6 +653,8 @@ void saveGame()
 
     fwrite(&playerCount,sizeof(int),1,fp);
     fwrite(players,sizeof(Player),playerCount,fp);
+    fwrite(map,sizeof(map),1,fp);
+    fwrite(hiddenTrap,sizeof(hiddenTrap),1,fp);
 
     fclose(fp);
 
@@ -654,6 +676,8 @@ int loadGame()
 
     fread(&playerCount,sizeof(int),1,fp);
     fread(players,sizeof(Player),playerCount,fp);
+    fread(map,sizeof(map),1,fp);
+    fread(hiddenTrap,sizeof(hiddenTrap),1,fp);
 
     fclose(fp);
 
@@ -750,9 +774,16 @@ void showScores()
                ranking[i].name,
                ranking[i].score);
     }
-
+    if(playerCount > 1 &&
+		    ranking[0].score == ranking[1].score)
+    {
+	    printf("\nResult : TIE GAME!\n");
+    }
+    else
+    {
     printf("\nWinner : %s\n",
            ranking[0].name);
+    }
 }
 
 //Show Statistics function
