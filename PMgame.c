@@ -239,7 +239,7 @@ void placePlayers()
     int r, c;
     int i;
 
-    for(i = 0; i < 2; i++)
+    for(i = 0; i<playerCount; i++)
     {
         do
         {
