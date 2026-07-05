@@ -321,6 +321,31 @@ int isValidMove(int row, int col)
     return 1;
 }
 
+//Door Handling Function
+int handleDoor(int playerIndex, int row, int col)
+{
+    if(map[row][col] == 'D')
+    {
+        if(players[playerIndex].keys > 0)
+        {
+            players[playerIndex].keys--;
+
+            map[row][col] = ' ';
+
+            printf("Door unlocked!\n");
+
+            return 1;
+        }
+        else
+        {
+            printf("Need a key to open this door!\n");
+
+            return 0;
+        }
+    }
+
+    return 1;
+}
 
 
 
