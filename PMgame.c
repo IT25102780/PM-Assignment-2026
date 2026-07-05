@@ -15,12 +15,26 @@
 typedef struct
 {
     char name[50];
+
     int row;
     int col;
+
     int score;
+
     int health;
+
     int keys;
+
     char symbol;
+
+    int movesMade;
+    int treasuresFound;
+    int trapsTriggered;
+    int damageTaken;
+    int healthPacksUsed;
+    int keysCollected;
+    int doorsUnlocked;
+
 } Player;
 
 char map[SIZE][SIZE];
