@@ -483,6 +483,25 @@ void movePlayer(int playerIndex)
     }
 }
 
+//Remaining Treasures Function
+int remainingTreasures()
+{
+    int i, j;
+    int count = 0;
+
+    for(i = 0; i < SIZE; i++)
+    {
+        for(j = 0; j < SIZE; j++)
+        {
+            if(map[i][j] == 'T')
+            {
+                count++;
+            }
+        }
+    }
+
+    return count;
+}
 
 
 
