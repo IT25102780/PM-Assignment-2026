@@ -517,6 +517,7 @@ void performMove(int playerIndex, char move)
 void movePlayer(int playerIndex)
 {
     char moves[50];
+    int i, len;
 
     if(players[playerIndex].health <= 0)
     {
@@ -532,15 +533,15 @@ void movePlayer(int playerIndex)
     printf("Enter up to 4 moves (WASD): ");
     scanf("%s", moves);
 
-    if(strlen(moves) > 4)
+    len = strlen(moves);
+
+    if(len > 4)
     {
         printf("More than 4 moves entered. Turn cancelled!\n");
         return;
     }
 
-    int i;
-
-    for(i = 0; i < strlen(moves); i++)
+    for(i = 0; i < len; i++)
     {
         performMove(playerIndex, moves[i]);
 	players[playerIndex].movesMade++;
@@ -570,13 +571,17 @@ int remainingTreasures()
 //End Game Check
 int allPlayersDead()
 {
-    if(players[0].health <= 0 &&
-       players[1].health <= 0)
+    int i;
+
+    for(i = 0; i < playerCount; i++)
     {
-        return 1;
+        if(players[i].health > 0)
+        {
+            return 0;
+        }
     }
 
-    return 0;
+    return 1;
 }
 
 //Add Log Function
@@ -626,9 +631,8 @@ void saveGame()
         return;
     }
 
-    fwrite(players, sizeof(Player), 2, fp);
-    fwrite(map, sizeof(map), 1, fp);
-    fwrite(hiddenTrap, sizeof(hiddenTrap), 1, fp);
+    fwrite(&playerCount,sizeof(int),1,fp);
+    fwrite(players,sizeof(Player),playerCount,fp);
 
     fclose(fp);
 
@@ -644,12 +648,12 @@ int loadGame()
 
     if(fp == NULL)
     {
-        return 0;
+         printf("No saved game found!\n");
+	 return 0;
     }
 
-    fread(players, sizeof(Player), 2, fp);
-    fread(map, sizeof(map), 1, fp);
-    fread(hiddenTrap, sizeof(hiddenTrap), 1, fp);
+    fread(&playerCount,sizeof(int),1,fp);
+    fread(players,sizeof(Player),playerCount,fp);
 
     fclose(fp);
 
@@ -663,7 +667,7 @@ void applyHPBonus()
 {
     int i;
 
-    for(i = 0; i < 2; i++)
+    for(i = 0; i < playerCount; i++)
     {
         if(players[i].health > 0)
         {
@@ -679,9 +683,9 @@ void sortPlayers(Player ranking[])
 
     Player temp;
 
-    for(i = 0; i < 1; i++)
+    for(i = 0; i < playerCount - 1; i++)
     {
-        for(j = 0; j < 1 - i; j++)
+        for(j = 0; j <playerCount - 1 - i; j++)
         {
             if(ranking[j].score < ranking[j + 1].score)
             {
@@ -721,15 +725,16 @@ void saveLog()
 //Leaderboard
 void showScores()
 {
-    Player ranking[2];
+    int i;
 
-    ranking[0] = players[0];
-    ranking[1] = players[1];
+    Player ranking[MAX_PLAYERS];
 
     applyHPBonus();
 
-    ranking[0] = players[0];
-    ranking[1] = players[1];
+    for(i = 0; i < playerCount; i++)
+    {
+        ranking[i] = players[i];
+    }
 
     sortPlayers(ranking);
 
@@ -738,23 +743,16 @@ void showScores()
     printf("FINAL LEADERBOARD\n");
     printf("================================\n");
 
-    printf("1. %s : %d\n",
-           ranking[0].name,
-           ranking[0].score);
-
-    printf("2. %s : %d\n",
-           ranking[1].name,
-           ranking[1].score);
-
-    if(ranking[0].score == ranking[1].score)
+    for(i = 0; i < playerCount; i++)
     {
-        printf("\nResult : TIE GAME!\n");
+        printf("%d. %s : %d\n",
+               i + 1,
+               ranking[i].name,
+               ranking[i].score);
     }
-    else
-    {
-        printf("\nWinner : %s\n",
-               ranking[0].name);
-    }
+
+    printf("\nWinner : %s\n",
+           ranking[0].name);
 }
 
 //Show Statistics function
@@ -818,14 +816,16 @@ void askSave()
 //Game Loop
 void gameLoop()
 {
-    while(1)
-    {
-        printMap();
+  int i;
 
-        movePlayer(0);
+  while(1)
+  {
+	  printMap();
 
-        movePlayer(1);
-
+	  for(i = 0; i < playerCount; i++)
+	  {
+		  movePlayer(i);
+	  }
         if(remainingTreasures() == 0)
         {
             printf("\nAll treasures collected!\n");
