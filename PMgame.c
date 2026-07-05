@@ -347,6 +347,58 @@ int handleDoor(int playerIndex, int row, int col)
     return 1;
 }
 
+//Process Tile Effects
+void processTile(int playerIndex)
+{
+    int r = players[playerIndex].row;
+    int c = players[playerIndex].col;
+
+    /* Trap */
+    if(hiddenTrap[r][c] == 1)
+    {
+        players[playerIndex].health -= 20;
+
+        if(players[playerIndex].health < 0)
+            players[playerIndex].health = 0;
+
+        hiddenTrap[r][c] = 0;
+
+        printf("Trap triggered! -20 HP\n");
+    }
+
+    /* Treasure */
+    if(map[r][c] == 'T')
+    {
+        players[playerIndex].score += 10;
+
+        map[r][c] = ' ';
+
+        printf("Treasure collected! +10 Score\n");
+    }
+
+    /* Health Pack */
+    if(map[r][c] == 'H')
+    {
+        players[playerIndex].health += 20;
+
+        if(players[playerIndex].health > 100)
+            players[playerIndex].health = 100;
+
+        map[r][c] = ' ';
+
+        printf("Health Pack used! +20 HP\n");
+    }
+
+    /* Key */
+    if(map[r][c] == 'K')
+    {
+        players[playerIndex].keys++;
+
+        map[r][c] = ' ';
+
+        printf("Key collected!\n");
+    }
+}
 
 
 
