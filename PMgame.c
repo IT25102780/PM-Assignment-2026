@@ -12,6 +12,11 @@
 #define DOORS 3
 #define TRAPS 10
 
+void addLog(char message[]);
+void printRecentLog();
+void saveLog();
+void showStatistics();
+
 typedef struct
 {
     char name[50];
