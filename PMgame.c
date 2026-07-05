@@ -492,6 +492,7 @@ void movePlayer(int playerIndex)
     for(i = 0; i < strlen(moves); i++)
     {
         performMove(playerIndex, moves[i]);
+	players[playerIndex].movesMade++;
     }
 }
 
