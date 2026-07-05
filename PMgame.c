@@ -180,8 +180,6 @@ void initializeMap()
     placeTraps();
 }
 
-//Main Function Test(complete map initialization section of part A)
-
 
 
 
@@ -305,6 +303,23 @@ int main()
     return 0;
 }
 
+
+
+
+//IsValidMove()
+int isValidMove(int row, int col)
+{
+    if(row < 0 || row >= SIZE)
+        return 0;
+
+    if(col < 0 || col >= SIZE)
+        return 0;
+
+    if(map[row][col] == '#')
+        return 0;
+
+    return 1;
+}
 
 
 
