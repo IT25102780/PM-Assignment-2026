@@ -535,4 +535,27 @@ void saveGame()
     printf("Game Saved Successfully!\n");
 }
 
+//Lode Game Function
+int loadGame()
+{
+    FILE *fp;
+
+    fp = fopen("savegame.dat", "rb");
+
+    if(fp == NULL)
+    {
+        return 0;
+    }
+
+    fread(players, sizeof(Player), 2, fp);
+    fread(map, sizeof(map), 1, fp);
+    fread(hiddenTrap, sizeof(hiddenTrap), 1, fp);
+
+    fclose(fp);
+
+    printf("Game Loaded Successfully!\n");
+
+    return 1;
+}
+
 
