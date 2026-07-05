@@ -293,9 +293,7 @@ int main()
     srand(time(NULL));
 
     initializeMap();
-
     initializePlayers();
-
     placePlayers();
 
     printMap();
@@ -515,5 +513,26 @@ int allPlayersDead()
     return 0;
 }
 
+//Save Game Function
+void saveGame()
+{
+    FILE *fp;
+
+    fp = fopen("savegame.dat", "wb");
+
+    if(fp == NULL)
+    {
+        printf("Save failed!\n");
+        return;
+    }
+
+    fwrite(players, sizeof(Player), 2, fp);
+    fwrite(map, sizeof(map), 1, fp);
+    fwrite(hiddenTrap, sizeof(hiddenTrap), 1, fp);
+
+    fclose(fp);
+
+    printf("Game Saved Successfully!\n");
+}
 
 
