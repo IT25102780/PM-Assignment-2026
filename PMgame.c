@@ -349,6 +349,12 @@ int handleDoor(int playerIndex, int row, int col)
 
             map[row][col] = ' ';
 
+	    char msg[100];
+
+            sprintf(msg,"%s unlocked a Door",players[playerIndex].name);
+
+            addLog(msg);
+
             printf("Door unlocked!\n");
 
             return 1;
@@ -382,6 +388,12 @@ void processTile(int playerIndex)
 	players[playerIndex].damageTaken += 20;
         hiddenTrap[r][c] = 0;
 
+        char msg[100];
+
+        sprintf(msg,"%s triggered Trap (-20 HP)",players[playerIndex].name);
+
+        addLog(msg);
+
         printf("Trap triggered! -20 HP\n");
     }
 
@@ -392,6 +404,12 @@ void processTile(int playerIndex)
 	players[playerIndex].treasuresFound++;
 
         map[r][c] = ' ';
+
+        char msg[100];
+
+        sprintf(msg,"%s collected a Treasure(+10)",players[playerIndex].name);
+
+        addLog(msg);
 
         printf("Treasure collected! +10 Score\n");
     }
@@ -407,6 +425,12 @@ void processTile(int playerIndex)
 	players[playerIndex].healthPacksUsed++;
         map[r][c] = ' ';
 
+	char msg[100];
+
+        sprintf(msg,"%s used a Health Pack (+20 HP)",players[playerIndex].name);
+
+        addLog(msg);
+
         printf("Health Pack used! +20 HP\n");
     }
 
@@ -417,6 +441,12 @@ void processTile(int playerIndex)
 	players[playerIndex].keysCollected++;
 
         map[r][c] = ' ';
+
+	char msg[100];
+
+        sprintf(msg,"%s collected a Key",players[playerIndex].name);
+
+        addLog(msg);
 
         printf("Key collected!\n");
     }
@@ -468,6 +498,12 @@ void performMove(int playerIndex, char move)
 
     players[playerIndex].row = newRow;
     players[playerIndex].col = newCol;
+
+    char msg[100];
+
+    sprintf(msg,"%s moved to (%d,%d)",players[playerIndex].name,newRow,newCol);
+
+    addLog(msg);
 
     processTile(playerIndex);
 }
