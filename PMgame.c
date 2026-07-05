@@ -342,6 +342,8 @@ int handleDoor(int playerIndex, int row, int col)
         {
             players[playerIndex].keys--;
 
+	    players[playerIndex].doorsUnlocked++;
+
             map[row][col] = ' ';
 
             printf("Door unlocked!\n");
