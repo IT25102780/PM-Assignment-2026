@@ -279,6 +279,7 @@ void printPlayerInfo()
 void printMap()
 {
     int i, j;
+    int k;
     int playerFound;
 
     printf("\n");
@@ -289,20 +290,18 @@ void printMap()
         {
             playerFound = 0;
 
-            if(players[0].health > 0 &&
-               players[0].row == i &&
-               players[0].col == j)
+            for(k = 0; k < playerCount; k++)
             {
-                printf("%c ", players[0].symbol);
-                playerFound = 1;
-            }
+                if(players[k].health > 0 &&
+                   players[k].row == i &&
+                   players[k].col == j)
+                {
+                    printf("%c ", players[k].symbol);
 
-            else if(players[1].health > 0 &&
-                    players[1].row == i &&
-                    players[1].col == j)
-            {
-                printf("%c ", players[1].symbol);
-                playerFound = 1;
+                    playerFound = 1;
+
+                    break;
+                }
             }
 
             if(!playerFound)
@@ -315,10 +314,8 @@ void printMap()
     }
 
     printPlayerInfo();
+    printRecentLog();
 }
-
-//Update Main Menu
-
 
 
 //IsValidMove()
