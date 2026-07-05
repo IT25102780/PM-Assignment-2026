@@ -503,5 +503,17 @@ int remainingTreasures()
     return count;
 }
 
+//End Game Check
+int allPlayersDead()
+{
+    if(players[0].health <= 0 &&
+       players[1].health <= 0)
+    {
+        return 1;
+    }
+
+    return 0;
+}
+
 
 
