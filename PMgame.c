@@ -44,6 +44,9 @@ int hiddenTrap[SIZE][SIZE];
 Player players[MAX_PLAYERS];
 int playerCount;
 
+#define MAX_LOGS 100
+char eventLog[MAX_LOGS][100];
+int logCount = 0;
 
 //Empty Map Initialization
 void initializeEmptyMap()
