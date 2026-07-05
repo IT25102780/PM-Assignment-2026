@@ -450,7 +450,38 @@ void performMove(int playerIndex, char move)
     processTile(playerIndex);
 }
 
+//Move Player Function
+void movePlayer(int playerIndex)
+{
+    char moves[50];
 
+    if(players[playerIndex].health <= 0)
+    {
+        printf("%s is eliminated.\n",
+               players[playerIndex].name);
+
+        return;
+    }
+
+    printf("\n%s's Turn\n",
+           players[playerIndex].name);
+
+    printf("Enter up to 4 moves (WASD): ");
+    scanf("%s", moves);
+
+    if(strlen(moves) > 4)
+    {
+        printf("More than 4 moves entered. Turn cancelled!\n");
+        return;
+    }
+
+    int i;
+
+    for(i = 0; i < strlen(moves); i++)
+    {
+        performMove(playerIndex, moves[i]);
+    }
+}
 
 
 
