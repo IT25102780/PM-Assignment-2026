@@ -260,7 +260,7 @@ void printPlayerInfo()
 
     printf("\n=====================================\n");
 
-    for(i = 0; i < 2; i++)
+    for(i = 0; i<playerCount; i++)
     {
         printf("Player %c (%s)\n",
                players[i].symbol,
