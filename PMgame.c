@@ -373,6 +373,8 @@ void processTile(int playerIndex)
         if(players[playerIndex].health < 0)
             players[playerIndex].health = 0;
 
+	players[playerIndex].trapsTriggered++;
+	players[playerIndex].damageTaken += 20;
         hiddenTrap[r][c] = 0;
 
         printf("Trap triggered! -20 HP\n");
@@ -382,6 +384,7 @@ void processTile(int playerIndex)
     if(map[r][c] == 'T')
     {
         players[playerIndex].score += 10;
+	players[playerIndex].treasuresFound++;
 
         map[r][c] = ' ';
 
@@ -396,6 +399,7 @@ void processTile(int playerIndex)
         if(players[playerIndex].health > 100)
             players[playerIndex].health = 100;
 
+	players[playerIndex].healthPacksUsed++;
         map[r][c] = ' ';
 
         printf("Health Pack used! +20 HP\n");
@@ -405,6 +409,7 @@ void processTile(int playerIndex)
     if(map[r][c] == 'K')
     {
         players[playerIndex].keys++;
+	players[playerIndex].keysCollected++;
 
         map[r][c] = ' ';
 
