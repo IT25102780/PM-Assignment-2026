@@ -558,4 +558,19 @@ int loadGame()
     return 1;
 }
 
+//Apply HP Bonus
+void applyHPBonus()
+{
+    int i;
+
+    for(i = 0; i < 2; i++)
+    {
+        if(players[i].health > 0)
+        {
+            players[i].score += players[i].health / 2;
+        }
+    }
+}
+
+
 
