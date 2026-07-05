@@ -26,7 +26,10 @@ typedef struct
 char map[SIZE][SIZE];
 int hiddenTrap[SIZE][SIZE];
 
-Player players[2];
+#define MAX_PLAYERS 3
+Player players[MAX_PLAYERS];
+int playerCount;
+
 
 //Empty Map Initialization
 void initializeEmptyMap()
