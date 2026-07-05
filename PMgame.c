@@ -538,6 +538,17 @@ int allPlayersDead()
     return 0;
 }
 
+//Add Log Function
+void addLog(char message[])
+{
+    if(logCount < MAX_LOGS)
+    {
+        strcpy(eventLog[logCount], message);
+
+        logCount++;
+    }
+}
+
 //Save Game Function
 void saveGame()
 {
