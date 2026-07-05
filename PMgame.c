@@ -646,3 +646,31 @@ void askSave()
     }
 }
 
+//Game Loop
+void gameLoop()
+{
+    while(1)
+    {
+        printMap();
+
+        movePlayer(0);
+
+        movePlayer(1);
+
+        if(remainingTreasures() == 0)
+        {
+            printf("\nAll treasures collected!\n");
+            break;
+        }
+
+        if(allPlayersDead())
+        {
+            printf("\nAll players eliminated!\n");
+            break;
+        }
+
+        askSave();
+    }
+}
+
+
