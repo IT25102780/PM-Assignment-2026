@@ -593,5 +593,42 @@ void sortPlayers(Player ranking[])
     }
 }
 
+//Leaderboard
+void showScores()
+{
+    Player ranking[2];
 
+    ranking[0] = players[0];
+    ranking[1] = players[1];
+
+    applyHPBonus();
+
+    ranking[0] = players[0];
+    ranking[1] = players[1];
+
+    sortPlayers(ranking);
+
+    printf("\n");
+    printf("================================\n");
+    printf("FINAL LEADERBOARD\n");
+    printf("================================\n");
+
+    printf("1. %s : %d\n",
+           ranking[0].name,
+           ranking[0].score);
+
+    printf("2. %s : %d\n",
+           ranking[1].name,
+           ranking[1].score);
+
+    if(ranking[0].score == ranking[1].score)
+    {
+        printf("\nResult : TIE GAME!\n");
+    }
+    else
+    {
+        printf("\nWinner : %s\n",
+               ranking[0].name);
+    }
+}
 
