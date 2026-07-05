@@ -688,6 +688,31 @@ void sortPlayers(Player ranking[])
     }
 }
 
+//Save Log Function
+void saveLog()
+{
+    FILE *fp;
+
+    int i;
+
+    fp = fopen("gamelog.txt", "w");
+
+    if(fp == NULL)
+    {
+        printf("Unable to save log file!\n");
+        return;
+    }
+
+    for(i = 0; i < logCount; i++)
+    {
+        fprintf(fp, "%s\n", eventLog[i]);
+    }
+
+    fclose(fp);
+
+    printf("Game Log Saved Successfully!\n");
+}
+
 //Leaderboard
 void showScores()
 {
@@ -724,6 +749,50 @@ void showScores()
     {
         printf("\nWinner : %s\n",
                ranking[0].name);
+    }
+}
+
+//Show Statistics function
+void showStatistics()
+{
+    int i;
+
+    printf("\n");
+    printf("=====================================\n");
+    printf("PLAYER STATISTICS\n");
+    printf("=====================================\n");
+
+    for(i = 0; i < playerCount; i++)
+    {
+        printf("\nPlayer %c (%s)\n",
+               players[i].symbol,
+               players[i].name);
+
+        printf("Moves Made        : %d\n",
+               players[i].movesMade);
+
+        printf("Treasures Found   : %d\n",
+               players[i].treasuresFound);
+
+        printf("Traps Triggered   : %d\n",
+               players[i].trapsTriggered);
+
+        printf("Damage Taken      : %d\n",
+               players[i].damageTaken);
+
+        printf("Health Packs Used : %d\n",
+               players[i].healthPacksUsed);
+
+        printf("Keys Collected    : %d\n",
+               players[i].keysCollected);
+
+        printf("Doors Unlocked    : %d\n",
+               players[i].doorsUnlocked);
+
+        printf("Final Score       : %d\n",
+               players[i].score);
+
+        printf("-------------------------------------\n");
     }
 }
 
@@ -815,6 +884,8 @@ int main()
     }
 
     showScores();
+    showStatistics();
+    saveLog();
 
     return 0;
 }
