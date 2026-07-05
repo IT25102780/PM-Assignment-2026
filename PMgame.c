@@ -572,5 +572,26 @@ void applyHPBonus()
     }
 }
 
+//Sort Scores
+void sortPlayers(Player ranking[])
+{
+    int i, j;
+
+    Player temp;
+
+    for(i = 0; i < 1; i++)
+    {
+        for(j = 0; j < 1 - i; j++)
+        {
+            if(ranking[j].score < ranking[j + 1].score)
+            {
+                temp = ranking[j];
+                ranking[j] = ranking[j + 1];
+                ranking[j + 1] = temp;
+            }
+        }
+    }
+}
+
 
 
