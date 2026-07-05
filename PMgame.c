@@ -549,6 +549,29 @@ void addLog(char message[])
     }
 }
 
+//Print Recent Log
+void printRecentLog()
+{
+    int i;
+
+    printf("\n========== RECENT EVENTS ==========\n");
+
+    if(logCount == 0)
+    {
+        printf("No Events Yet.\n");
+        return;
+    }
+
+    for(i = (logCount > 5 ? logCount - 5 : 0);
+        i < logCount;
+        i++)
+    {
+        printf("%s\n", eventLog[i]);
+    }
+
+    printf("===================================\n");
+}
+
 //Save Game Function
 void saveGame()
 {
