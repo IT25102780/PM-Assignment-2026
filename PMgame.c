@@ -673,4 +673,16 @@ void gameLoop()
     }
 }
 
+//New Game
+void newGame()
+{
+    initializeMap();
+
+    initializePlayers();
+
+    placePlayers();
+
+    gameLoop();
+}
+
 
