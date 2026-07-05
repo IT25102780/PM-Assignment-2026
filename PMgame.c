@@ -685,4 +685,42 @@ void newGame()
     gameLoop();
 }
 
+//Main Menu
+int main()
+{
+    int choice;
+
+    srand(time(NULL));
+
+    printf("=================================\n");
+    printf(" QUEST FOR THE LOST TREASURE\n");
+    printf("=================================\n");
+
+    printf("1. New Game\n");
+    printf("2. Load Game\n");
+
+    printf("Enter Choice : ");
+    scanf("%d", &choice);
+
+    if(choice == 2)
+    {
+        if(loadGame())
+        {
+            gameLoop();
+        }
+        else
+        {
+            printf("No Save File Found!\n");
+            newGame();
+        }
+    }
+    else
+    {
+        newGame();
+    }
+
+    showScores();
+
+    return 0;
+}
 
